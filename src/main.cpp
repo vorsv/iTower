@@ -9,10 +9,10 @@ int main(){
 
     // FONT DECLARATION
     sf::Font Jetbrains,JetbrainsBold;
-    if (!Jetbrains.openFromFile("../res/JetBrainsMonoNerdFontMono-Medium.ttf")) {
+    if (!Jetbrains.openFromFile("res/JetBrainsMonoNerdFontMono-Medium.ttf")) {
         return -1;
     }
-    if (!JetbrainsBold.openFromFile("../res/JetBrainsMonoNerdFontMono-Bold.ttf")) {
+    if (!JetbrainsBold.openFromFile("res/JetBrainsMonoNerdFontMono-Bold.ttf")) {
         return -1;
     }
     // BUTTON AND SCORE INIT
