@@ -11,7 +11,7 @@ class Button{
         void setFont(const sf::Font& font,  unsigned int fontSize);
         void setPosition(const sf::Vector2f& pos);
         void setBackgroundColor(const sf::Color& color);
-        void setText(const String& string);
+        void setText(const std::string& string);
 
         void centerText();
         void drawTo(sf::RenderWindow& window);

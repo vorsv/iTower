@@ -14,7 +14,7 @@ void Button::setFont(const sf::Font& font, unsigned int fontSize){
     centerText();
 }
 
-void Button::setText(const String& string){
+void Button::setText(const std::string& string){
     Btext.setString(string);
 
     centerText();

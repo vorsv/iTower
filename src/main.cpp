@@ -37,7 +37,6 @@ int main(){
 
     // text params font,char size,color,pos,content
     unsigned int score = 0, fontSize = 20, level = 0;
-    long double modifier = 1;
     sf::Text scoreText(Jetbrains, "Score :: 0", fontSize);
     scoreText.setPosition({50,50});
     scoreText.setFillColor(sf::Color::Black);
@@ -53,15 +52,16 @@ int main(){
                 if(mouseButton->button == sf::Mouse::Button::Left){
                     //makes it so the the click score is added to the total score
                     if(scorer.isMouseOver(window)){
-                        gameState.score += modifier * gameState.clickValue;
+                        gameState.score += gameState.clickValue;
                     }
                     // first we reduce the cost of upgrade from the score then we increse the CPS and upgrade cost
                     else if (upgradeButton.isMouseOver(window) && gameState.score>gameState.upgradeCost){
                         gameState.score -= gameState.upgradeCost;
-                        gameState.scorePerSecond += 0.2 * power(1.5,level);
-                        gameState.upgradeCost *= 1.15 * power(2,level);
+                        gameState.scorePerSecond += 0.2 ;
+                        gameState.upgradeCost = int(gameState.upgradeCost * 1.15);
+                        gameState.clickValue = int(gameState.clickValue * 1.15);
                         level++;
-                        modifier *= power(2,level);
+                        
                     }
                 }
             }
@@ -76,13 +76,14 @@ int main(){
         }
         if(upgradeButton.isMouseOver(window) && gameState.score>gameState.upgradeCost){
             upgradeButton.setFont(JetbrainsBold, fontSize);
-            upgradeButton.setString("Upgrade for "+ std::to_string(gameState.upgradeCost));
+            upgradeButton.setText("Upgrade for "+ std::to_string(int(gameState.upgradeCost)));
         }else{
             upgradeButton.setFont(Jetbrains, fontSize);
+            upgradeButton.setText("Upgrade for "+ std::to_string(int(gameState.upgradeCost)));
         }
 
         // setting text
-        scoreText.setString("Score :: " + std::to_string(gameState.score));
+        scoreText.setString("Score :: " + std::to_string(gameState.score) +"\nSPS   :: " + std::to_string(gameState.scorePerSecond));
 
 
         window.clear(sf::Color::Red);
