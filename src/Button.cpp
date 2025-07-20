@@ -13,6 +13,12 @@ void Button::setFont(const sf::Font& font, unsigned int fontSize){
 
     centerText();
 }
+
+void Button::setText(const String& string){
+    Btext.setString(string);
+
+    centerText();
+}
 void Button::centerText(){
     sf::FloatRect textRect = Btext.getLocalBounds();
     sf::FloatRect shapeRect = Bshape.getGlobalBounds();
